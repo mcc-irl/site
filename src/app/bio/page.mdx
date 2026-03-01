@@ -1,9 +1,104 @@
 export const metadata = {
   title: "Bio | Michelle Carter Consultancy",
+  description:
+    "Learn more about Michelle Carter, her healthcare training background, qualifications, and consultancy values.",
 };
 
-# Bio
+import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
 
-This page is powered by MDX and ready for Phase 3 content.
+<section className="py-16 sm:py-20">
+  <Container>
+    <SectionHeading
+      eyebrow="About"
+      title="Michelle Carter"
+      description="Experienced healthcare trainer and consultant supporting teams to deliver safe, compassionate, person-centred care."
+    />
 
-Michelle Carter Consultancy provides healthcare training and consultancy services focused on practical, high-quality learning outcomes.
+    <div className="mt-10 grid gap-8 lg:grid-cols-[320px_1fr] lg:items-start">
+      <div className="rounded-xl border border-slate-200 bg-slate-50 p-6">
+        <div className="flex aspect-[4/5] items-center justify-center rounded-lg border border-dashed border-slate-300 bg-white text-center">
+          <p className="px-6 text-sm text-slate-500">Professional headshot placeholder</p>
+        </div>
+      </div>
+
+      <div className="space-y-5 text-slate-700">
+        <p>
+          Michelle has spent over 15 years working across clinical practice, staff development, and healthcare
+          education. Her work focuses on translating policy and standards into practical day-to-day actions for
+          frontline teams.
+        </p>
+        <p>
+          She partners with residential care, community services, and healthcare providers to design engaging
+          training programmes that improve confidence, competence, and consistency in care delivery.
+        </p>
+        <p>
+          Through Michelle Carter Consultancy, she delivers tailored education and quality-focused consultancy that
+          helps organisations strengthen governance, support staff, and improve outcomes for the people they serve.
+        </p>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<section className="border-y border-slate-200 bg-slate-50 py-16 sm:py-20">
+  <Container>
+    <SectionHeading
+      eyebrow="Credentials"
+      title="Qualifications & Professional Development"
+      description="A strong clinical and educational foundation that supports evidence-based, practical training delivery."
+    />
+
+    <ul className="mt-10 grid gap-4 sm:grid-cols-2" aria-label="Qualifications and credentials">
+      <li className="rounded-xl border border-slate-200 bg-white p-5 text-slate-700">Registered Nurse (RGN)</li>
+      <li className="rounded-xl border border-slate-200 bg-white p-5 text-slate-700">
+        QQI Level 6 Training Delivery & Evaluation
+      </li>
+      <li className="rounded-xl border border-slate-200 bg-white p-5 text-slate-700">
+        Patient Moving & Handling Instructor Certification
+      </li>
+      <li className="rounded-xl border border-slate-200 bg-white p-5 text-slate-700">
+        Manual Handling Instructor Certification
+      </li>
+      <li className="rounded-xl border border-slate-200 bg-white p-5 text-slate-700">
+        Infection Prevention and Control Trainer
+      </li>
+      <li className="rounded-xl border border-slate-200 bg-white p-5 text-slate-700">
+        Safeguarding of Vulnerable Adults Trainer
+      </li>
+    </ul>
+  </Container>
+</section>
+
+<section className="py-16 sm:py-20">
+  <Container>
+    <SectionHeading
+      eyebrow="Mission"
+      title="Values-led consultancy"
+      description="Michelle's approach is grounded in quality improvement, collaboration, and person-centred care."
+    />
+
+    <div className="mt-10 grid gap-5 md:grid-cols-3">
+      <article className="rounded-xl border border-slate-200 bg-white p-6">
+        <h3 className="text-lg font-semibold text-slate-900">Practical Excellence</h3>
+        <p className="mt-3 text-slate-600">
+          Training is designed to be clear, hands-on, and directly relevant to real care environments.
+        </p>
+      </article>
+
+      <article className="rounded-xl border border-slate-200 bg-white p-6">
+        <h3 className="text-lg font-semibold text-slate-900">Compassionate Leadership</h3>
+        <p className="mt-3 text-slate-600">
+          Teams are supported to build confidence, communicate effectively, and lead with empathy.
+        </p>
+      </article>
+
+      <article className="rounded-xl border border-slate-200 bg-white p-6">
+        <h3 className="text-lg font-semibold text-slate-900">Sustainable Quality</h3>
+        <p className="mt-3 text-slate-600">
+          Every programme aims to embed long-term improvements in safety, standards, and outcomes.
+        </p>
+      </article>
+    </div>
+  </Container>
+</section>

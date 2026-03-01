@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   description:
     "Professional healthcare training and consultancy services by Michelle Carter Consultancy.",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
