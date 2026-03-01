@@ -1,6 +1,21 @@
+import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import reviews from "../../../content/reviews.json";
+
+export const metadata: Metadata = {
+  title: "Reviews",
+  description: "Read client testimonials and feedback from healthcare teams supported by Michelle Carter Consultancy.",
+  openGraph: {
+    title: "Reviews | Michelle Carter Consultancy",
+    description: "Read client testimonials and feedback from healthcare teams supported by Michelle Carter Consultancy.",
+    url: "https://michellecarterconsultancy.ie/reviews",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/reviews",
+  },
+};
 
 type Review = {
   name: string;

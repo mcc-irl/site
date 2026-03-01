@@ -1,8 +1,25 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import reviews from "../../content/reviews.json";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Healthcare training and consultancy that helps teams deliver safe, confident, person-centred care.",
+  openGraph: {
+    title: "Michelle Carter Consultancy | Healthcare Training",
+    description:
+      "Healthcare training and consultancy that helps teams deliver safe, confident, person-centred care.",
+    url: "https://michellecarterconsultancy.ie",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
 
 type Review = {
   name: string;

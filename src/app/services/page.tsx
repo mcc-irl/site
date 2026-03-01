@@ -1,7 +1,22 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import services from "../../../content/services.json";
+
+export const metadata: Metadata = {
+  title: "Services",
+  description: "Explore healthcare training and consultancy services tailored to your team and organisation.",
+  openGraph: {
+    title: "Services | Michelle Carter Consultancy",
+    description: "Explore healthcare training and consultancy services tailored to your team and organisation.",
+    url: "https://michellecarterconsultancy.ie/services",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/services",
+  },
+};
 
 type Service = {
   id: string;

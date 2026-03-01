@@ -15,8 +15,17 @@ type ContactPageProps = {
 };
 
 export const metadata: Metadata = {
-  title: "Contact | Michelle Carter Consultancy",
+  title: "Contact",
   description: "Get in touch with Michelle Carter Consultancy for healthcare training and consultancy enquiries.",
+  openGraph: {
+    title: "Contact | Michelle Carter Consultancy",
+    description: "Get in touch with Michelle Carter Consultancy for healthcare training and consultancy enquiries.",
+    url: "https://michellecarterconsultancy.ie/contact",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage({ searchParams }: ContactPageProps) {

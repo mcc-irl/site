@@ -37,6 +37,18 @@ Notes:
 - `CONTACT_FROM_EMAIL` defaults to `onboarding@resend.dev` if omitted.
 - Basic anti-spam is enabled using a honeypot field and simple rate limiting.
 
+## Analytics and cookie notice
+
+The site includes a GDPR-style cookie notice and only loads analytics after visitor consent.
+
+To enable Plausible analytics, set:
+
+```bash
+NEXT_PUBLIC_PLAUSIBLE_DOMAIN=michellecarterconsultancy.ie
+```
+
+If this value is not set, no analytics script is loaded.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
