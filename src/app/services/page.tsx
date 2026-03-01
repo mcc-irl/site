@@ -1,14 +1,50 @@
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
+import services from "../../../content/services.json";
+
+type Service = {
+  id: string;
+  title: string;
+  description: string;
+  icon?: string;
+};
 
 export default function ServicesPage() {
+  const serviceList = services as Service[];
+
   return (
     <section className="py-16 sm:py-20">
       <Container>
         <SectionHeading
+          eyebrow="Our Services"
           title="Services"
-          description="Services content will be added in Phase 4."
+          description="Healthcare training and consultancy services designed to strengthen capability, confidence, and quality across your team."
         />
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {serviceList.map((service) => (
+            <article key={service.id} className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-base font-semibold text-slate-900">{service.title}</h3>
+                {service.icon ? (
+                  <span
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand-100 bg-brand-50 text-lg"
+                    aria-hidden="true"
+                  >
+                    {service.icon}
+                  </span>
+                ) : null}
+              </div>
+              <p className="mt-3 text-sm leading-6 text-slate-600">{service.description}</p>
+              <div className="mt-5">
+                <Button href={`/contact?service=${encodeURIComponent(service.title)}`} variant="secondary">
+                  Enquire about this service
+                </Button>
+              </div>
+            </article>
+          ))}
+        </div>
       </Container>
     </section>
   );
