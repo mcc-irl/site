@@ -64,6 +64,19 @@ export default function Home() {
               View Services
             </Button>
           </div>
+
+          {featuredReview ? (
+            <article className="mt-10 max-w-2xl rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
+              <p className="text-sm font-semibold uppercase tracking-wider text-brand-700">Featured Testimonial</p>
+              <p className="mt-3 text-base leading-7 text-slate-700">“{featuredReview.quote}”</p>
+              <div className="mt-4">
+                <p className="font-semibold text-slate-900">{featuredReview.name}</p>
+                <p className="text-sm text-slate-600">
+                  {featuredReview.role}, {featuredReview.organisation}
+                </p>
+              </div>
+            </article>
+          ) : null}
         </Container>
       </section>
 
@@ -94,27 +107,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </Container>
-      </section>
-
-      <section className="py-16 sm:py-20">
-        <Container>
-          <SectionHeading
-            eyebrow="Client Feedback"
-            title="Trusted by care providers"
-            description="A snapshot of recent feedback from organisations we support."
-          />
-          {featuredReview ? (
-            <article className="mt-10 rounded-xl border border-slate-200 bg-white p-8 shadow-xs">
-              <p className="text-lg leading-8 text-slate-700">“{featuredReview.quote}”</p>
-              <div className="mt-6">
-                <p className="font-semibold text-slate-900">{featuredReview.name}</p>
-                <p className="text-sm text-slate-600">
-                  {featuredReview.role}, {featuredReview.organisation}
-                </p>
-              </div>
-            </article>
-          ) : null}
         </Container>
       </section>
 
