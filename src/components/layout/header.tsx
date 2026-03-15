@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
+import { MobileNav } from "./mobile-nav";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -12,8 +13,8 @@ const navItems = [
 
 export function Header() {
   return (
-    <header className="border-b border-slate-200 bg-white/95 backdrop-blur">
-      <div className="border-b border-slate-200 bg-slate-50">
+    <header className="relative border-b border-slate-200 bg-white/95 backdrop-blur">
+      <div className="hidden md:block border-b border-slate-200 bg-slate-50">
         <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-2 text-xs sm:text-sm text-slate-700">
           <a
             href="https://linkedin.com/mcc"
@@ -54,8 +55,8 @@ export function Header() {
           </span>
         </Link>
 
-        <nav aria-label="Primary navigation">
-          <ul className="flex flex-wrap items-center justify-end gap-x-5 gap-y-2 text-sm font-medium text-slate-700">
+        <nav aria-label="Primary navigation" className="hidden md:block">
+          <ul className="flex items-center gap-x-5 text-sm font-medium text-slate-700">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition-colors hover:text-brand-700">
@@ -65,6 +66,8 @@ export function Header() {
             ))}
           </ul>
         </nav>
+
+        <MobileNav />
       </Container>
     </header>
   );
