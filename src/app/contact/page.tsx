@@ -53,14 +53,14 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
             <ul className="mt-4 space-y-3 text-sm text-slate-700">
               <li>
                 <p className="font-medium text-slate-900">Email</p>
-                <a href="mailto:mcc@outlook.ie" className="transition-colors hover:text-brand-700">
-                  mcc@outlook.ie
+                <a href="mailto:michellecarterconsultancy@outlook.ie" className="transition-colors hover:text-brand-700">
+                  michellecarterconsultancy@outlook.ie
                 </a>
               </li>
               <li>
                 <p className="font-medium text-slate-900">Phone</p>
-                <a href="tel:0879033289" className="transition-colors hover:text-brand-700">
-                  0879033289
+                <a href="tel:0874255819" className="transition-colors hover:text-brand-700">
+                  0874255819
                 </a>
               </li>
               <li>
@@ -70,12 +70,12 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
               <li>
                 <p className="font-medium text-slate-900">LinkedIn</p>
                 <a
-                  href="https://linkedin.com/mcc"
+                  href="https://ie.linkedin.com/in/michelle-carter-47b5482a9"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-brand-700"
                 >
-                  linkedin.com/mcc
+                  ie.linkedin.com/in/michelle-carter-47b5482a9
                 </a>
               </li>
             </ul>
