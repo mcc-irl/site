@@ -1,0 +1,23 @@
+heroEyebrow: Healthcare Training
+heroHeading: Professional healthcare training that helps teams deliver safe, confident, person-centred care.
+heroDescription: Michelle Carter Consultancy partners with healthcare providers to build workforce capability through practical learning, clear standards, and compassionate leadership.
+heroPrimaryButtonText: Get In Touch
+heroPrimaryButtonHref: /contact
+heroSecondaryButtonText: View Services
+heroSecondaryButtonHref: /services
+servicesEyebrow: What We Do
+servicesHeading: Training and consultancy for modern healthcare teams
+servicesDescription: Focused support that improves confidence, quality, and day-to-day practice across your service.
+trustStats:
+  - value: 15+
+    label: Years in Healthcare Education
+  - value: 100+
+    label: Care Teams Supported
+  - value: 250+
+    label: Training Programmes Delivered
+testimonialsEyebrow: What Our Clients Say
+testimonialsHeading: Trusted by healthcare teams across Ireland
+ctaHeading: Ready to strengthen your team's training programme?
+ctaDescription: "Let's discuss your service needs and build a practical training plan that fits your team."
+ctaButtonText: Get in touch
+ctaButtonHref: /contact

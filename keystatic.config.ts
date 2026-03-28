@@ -28,6 +28,10 @@ export default config({
           label: "Featured on homepage",
           defaultValue: false,
         }),
+        showInCarousel: fields.checkbox({
+          label: "Show in homepage testimonials carousel",
+          defaultValue: false,
+        }),
       },
     }),
 
@@ -45,6 +49,40 @@ export default config({
   },
 
   singletons: {
+    homePage: singleton({
+      label: "Home Page",
+      path: "content/homepage",
+      format: { data: "yaml" },
+      schema: {
+        heroEyebrow: fields.text({ label: "Hero Eyebrow" }),
+        heroHeading: fields.text({ label: "Hero Heading", multiline: true }),
+        heroDescription: fields.text({ label: "Hero Description", multiline: true }),
+        heroPrimaryButtonText: fields.text({ label: "Primary Button Text" }),
+        heroPrimaryButtonHref: fields.text({ label: "Primary Button URL" }),
+        heroSecondaryButtonText: fields.text({ label: "Secondary Button Text" }),
+        heroSecondaryButtonHref: fields.text({ label: "Secondary Button URL" }),
+        servicesEyebrow: fields.text({ label: "Services Section Eyebrow" }),
+        servicesHeading: fields.text({ label: "Services Section Heading" }),
+        servicesDescription: fields.text({ label: "Services Section Description", multiline: true }),
+        trustStats: fields.array(
+          fields.object({
+            value: fields.text({ label: "Value" }),
+            label: fields.text({ label: "Label" }),
+          }),
+          {
+            label: "Trust Stats",
+            itemLabel: (props) => props.fields.label.value ?? "Untitled",
+          }
+        ),
+        testimonialsEyebrow: fields.text({ label: "Testimonials Section Eyebrow" }),
+        testimonialsHeading: fields.text({ label: "Testimonials Section Heading" }),
+        ctaHeading: fields.text({ label: "CTA Heading" }),
+        ctaDescription: fields.text({ label: "CTA Description", multiline: true }),
+        ctaButtonText: fields.text({ label: "CTA Button Text" }),
+        ctaButtonHref: fields.text({ label: "CTA Button URL" }),
+      },
+    }),
+
     bio: singleton({
       label: "Bio",
       path: "content/bio",
