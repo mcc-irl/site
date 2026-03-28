@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import reviews from "../../../content/reviews.json";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../../keystatic.config";
 
 export const metadata: Metadata = {
   title: "Reviews",
@@ -17,21 +18,17 @@ export const metadata: Metadata = {
   },
 };
 
-type Review = {
-  name: string;
-  role: string;
-  organisation: string;
-  quote: string;
-  rating: number;
-};
-
 function renderStars(rating: number) {
   const safeRating = Math.max(0, Math.min(5, rating));
   return "★".repeat(safeRating) + "☆".repeat(5 - safeRating);
 }
 
-export default function ReviewsPage() {
-  const reviewList = reviews as Review[];
+export default async function ReviewsPage() {
+  const reader = createReader(process.cwd(), keystaticConfig);
+  const entries = await reader.collections.reviews.all();
+  const reviewList = entries
+    .filter((e) => e.entry !== null)
+    .map((e) => e.entry!);
 
   return (
     <section className="py-16 sm:py-20">
@@ -49,7 +46,7 @@ export default function ReviewsPage() {
               className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs"
             >
               <p className="text-sm font-semibold tracking-wide text-amber-500" aria-label={`${review.rating} out of 5 stars`}>
-                {renderStars(review.rating)}
+                {renderStars(review.rating ?? 5)}
               </p>
               <p className="mt-4 text-base leading-7 text-slate-700">“{review.quote}”</p>
               <div className="mt-5 border-t border-slate-200 pt-4">

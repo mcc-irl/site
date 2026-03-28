@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import services from "../../../content/services.json";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../../keystatic.config";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -18,15 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-type Service = {
-  id: string;
-  title: string;
-  description: string;
-  icon?: string;
-};
-
-export default function ServicesPage() {
-  const serviceList = services as Service[];
+export default async function ServicesPage() {
+  const reader = createReader(process.cwd(), keystaticConfig);
+  const entries = await reader.collections.services.all();
+  const serviceList = entries
+    .filter((e) => e.entry !== null)
+    .map((e) => ({ ...e.entry!, slug: e.slug }));
 
   return (
     <section className="py-16 sm:py-20">
@@ -39,7 +37,7 @@ export default function ServicesPage() {
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {serviceList.map((service) => (
-            <article key={service.id} className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
+            <article key={service.slug} className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-base font-semibold text-slate-900">{service.title}</h3>
                 {service.icon ? (
@@ -53,7 +51,7 @@ export default function ServicesPage() {
               </div>
               <p className="mt-3 text-sm leading-6 text-slate-600">{service.description}</p>
               <div className="mt-5">
-                <Button href={`/contact?service=${encodeURIComponent(service.title)}`} variant="secondary">
+                <Button href={`/contact?service=${encodeURIComponent(service.title ?? '')}`} variant="secondary">
                   Enquire about this service
                 </Button>
               </div>

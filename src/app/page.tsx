@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import reviews from "../../content/reviews.json";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../keystatic.config";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -19,15 +20,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-};
-
-type Review = {
-  name: string;
-  role: string;
-  organisation: string;
-  quote: string;
-  rating: number;
-  featured?: boolean;
 };
 
 const services = [
@@ -59,8 +51,10 @@ const trustStats = [
   { label: "Training Programmes Delivered", value: "250+" },
 ];
 
-export default function Home() {
-  const reviewList = reviews as Review[];
+export default async function Home() {
+  const reader = createReader(process.cwd(), keystaticConfig);
+  const entries = await reader.collections.reviews.all();
+  const reviewList = entries.filter((e) => e.entry !== null).map((e) => e.entry!);
   const featuredReview = reviewList.find((review) => review.featured) ?? reviewList[0];
 
   return (

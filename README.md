@@ -49,6 +49,39 @@ NEXT_PUBLIC_PLAUSIBLE_DOMAIN=michellecarter.ie
 
 If this value is not set, no analytics script is loaded.
 
+## Content management (Keystatic)
+
+The site uses [Keystatic](https://keystatic.com) for managing reviews, services, and the bio page. Content is stored as YAML files in the `content/` directory.
+
+### Local development
+
+In development, Keystatic runs in local mode — no auth required. Start the dev server and visit:
+
+```
+http://localhost:3000/keystatic
+```
+
+### Production (Netlify + GitHub)
+
+In production, Keystatic authenticates via GitHub OAuth. You need to:
+
+1. **Create a GitHub OAuth App** at https://github.com/settings/developers
+   - Application name: Michelle Carter Consultancy
+   - Homepage URL: `https://michellecarter.ie`
+   - Callback URL: `https://michellecarter.ie/api/keystatic/github/oauth/callback`
+
+2. **Add these environment variables** in Netlify (Site settings → Environment variables):
+
+```bash
+KEYSTATIC_GITHUB_CLIENT_ID=your_github_oauth_client_id
+KEYSTATIC_GITHUB_CLIENT_SECRET=your_github_oauth_client_secret
+KEYSTATIC_SECRET=a_long_random_secret_string
+```
+
+3. **Grant the editor GitHub access** — add them as a collaborator on the `mcc-irl/site` repository with Write access.
+
+The admin is then accessible at `https://michellecarter.ie/keystatic`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

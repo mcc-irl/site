@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import services from "../../../content/services.json";
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../../keystatic.config";
 import { ContactForm } from "@/components/contact/contact-form";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-type Service = {
-  title: string;
-};
-
 type ContactPageProps = {
-  searchParams?: {
-    service?: string;
-  };
+  searchParams?: Promise<{ service?: string }>;
 };
 
 export const metadata: Metadata = {
@@ -28,9 +23,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactPage({ searchParams }: ContactPageProps) {
-  const selectedService = searchParams?.service?.trim();
-  const serviceOptions = (services as Service[]).map((service) => service.title);
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const reader = createReader(process.cwd(), keystaticConfig);
+  const entries = await reader.collections.services.all();
+  const serviceOptions = entries
+    .filter((e) => e.entry?.title != null)
+    .map((e) => e.entry!.title!);
+  const params = await searchParams;
+  const selectedService = params?.service?.trim();
 
   return (
     <section className="py-16 sm:py-20">
