@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Reviews | Michelle Carter Consultancy",
     description: "Read client testimonials and feedback from healthcare teams supported by Michelle Carter Consultancy.",
-    url: "https://michellecarterconsultancy.ie/reviews",
+    url: "https://michellecarter.ie/reviews",
     type: "website",
   },
   alternates: {

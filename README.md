@@ -44,7 +44,7 @@ The site includes a GDPR-style cookie notice and only loads analytics after visi
 To enable Plausible analytics, set:
 
 ```bash
-NEXT_PUBLIC_PLAUSIBLE_DOMAIN=michellecarterconsultancy.ie
+NEXT_PUBLIC_PLAUSIBLE_DOMAIN=michellecarter.ie
 ```
 
 If this value is not set, no analytics script is loaded.

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "Michelle Carter Consultancy | Healthcare Training",
     description:
       "Healthcare training and consultancy that helps teams deliver safe, confident, person-centred care.",
-    url: "https://michellecarterconsultancy.ie",
+    url: "https://michellecarter.ie",
     type: "website",
   },
   alternates: {

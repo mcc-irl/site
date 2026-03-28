@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://michellecarterconsultancy.ie"),
+  metadataBase: new URL("https://michellecarter.ie"),
   title: {
     default: "Michelle Carter Consultancy | Healthcare Training",
     template: "%s | Michelle Carter Consultancy",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description:
       "Professional healthcare training and consultancy services by Michelle Carter Consultancy.",
     type: "website",
-    url: "https://michellecarterconsultancy.ie",
+    url: "https://michellecarter.ie",
     siteName: "Michelle Carter Consultancy",
   },
   twitter: {

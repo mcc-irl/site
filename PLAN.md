@@ -1,6 +1,6 @@
 # Michelle Carter Consultancy — Website Project Plan
 
-**Domain:** mcconsultancy.ie  
+**Domain:** michellecarter.ie  
 **Industry:** Healthcare Training  
 **Tech Stack:** Next.js 14 (App Router) + MDX content files  
 **Styling:** Tailwind CSS  
@@ -138,13 +138,13 @@
 | # | Task | Detail |
 |---|------|--------|
 | 8.1 | Choose hosting provider | Vercel (recommended), Netlify, or traditional host |
-| 8.2 | Connect custom domain | `michellecarterconsultancy.ie` DNS configuration |
+| 8.2 | Connect custom domain | `michellecarter.ie` DNS configuration |
 | 8.3 | SSL certificate | Auto-provisioned via host (Let's Encrypt) |
 | 8.4 | Environment variables | Email API keys, analytics IDs |
 | 8.5 | CI/CD | Auto-deploy on `main` branch push |
 | 8.6 | Final QA | Cross-browser testing (Chrome, Safari, Firefox, Edge + mobile) |
 
-**Deliverable:** Live website at michellecarterconsultancy.ie.
+**Deliverable:** Live website at michellecarter.ie.
 
 ---
 
