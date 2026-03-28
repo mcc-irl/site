@@ -16,18 +16,36 @@ export function Header() {
     <header className="relative border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="hidden md:block border-b border-slate-200 bg-slate-50">
         <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-2 text-xs sm:text-sm text-slate-700">
-          <a
-            href="https://ie.linkedin.com/in/michelle-carter-47b5482a9"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center text-slate-500 transition-colors hover:text-brand-700"
-            aria-label="LinkedIn"
-          >
-            <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
-              <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.26 8h4.48v14H.26V8zM8.26 8h4.3v1.92h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V22h-4.48v-6.67c0-1.59-.03-3.64-2.22-3.64-2.22 0-2.56 1.74-2.56 3.53V22H8.26V8z" />
-            </svg>
-            <span className="sr-only">LinkedIn</span>
-          </a>
+          <div className="inline-flex items-center gap-3">
+            <a
+              href="https://ie.linkedin.com/in/michelle-carter-47b5482a9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-slate-500 transition-colors hover:text-brand-700"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" fill="currentColor">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.26 8h4.48v14H.26V8zM8.26 8h4.3v1.92h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V22h-4.48v-6.67c0-1.59-.03-3.64-2.22-3.64-2.22 0-2.56 1.74-2.56 3.53V22H8.26V8z" />
+              </svg>
+              <span className="sr-only">LinkedIn</span>
+            </a>
+
+            <a
+              href="https://coru.portaleu.thentiacloud.net/webs/portal/register/#/profile/Michelle%20Carter/0/20/Social%2520Care%2520Worker/all/false/66ed894532f87e7054d03adf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center transition-opacity opacity-75 hover:opacity-100"
+              aria-label="CORU Registration"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="12" fill="#1b2d40" />
+                <text x="2.2" y="15.2" fontFamily="Arial,Helvetica,sans-serif" fontWeight="900" fontSize="8" fill="#ffffff">C</text>
+                <circle cx="10.2" cy="12" r="2.6" fill="#00b4d8" />
+                <text x="13.4" y="15.2" fontFamily="Arial,Helvetica,sans-serif" fontWeight="900" fontSize="8" fill="#ffffff">RU</text>
+              </svg>
+              <span className="sr-only">CORU Registration</span>
+            </a>
+          </div>
 
           <div className="flex flex-wrap items-center justify-end gap-x-5 gap-y-2">
             <a href="mailto:michellecarterconsultancy@outlook.ie" className="inline-flex items-center gap-1.5 transition-colors hover:text-brand-700">

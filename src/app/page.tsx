@@ -33,9 +33,9 @@ export default async function Home() {
   ]);
 
   const carouselReviews = reviewEntries
-    .filter((e) => e.entry?.showInCarousel && e.entry.name != null)
+    .filter((e) => e.entry !== null && e.entry.showInCarousel)
     .map((e) => ({
-      name: e.entry!.name as unknown as string,
+      name: e.entry!.name ?? e.slug,
       role: e.entry!.role,
       organisation: e.entry!.organisation,
       quote: e.entry!.quote,
@@ -122,7 +122,7 @@ export default async function Home() {
               {homePage.ctaDescription}
             </p>
             <div className="mt-6">
-              <Button href={homePage.ctaButtonHref} variant="secondary">
+              <Button href={homePage.ctaButtonHref} variant="white">
                 {homePage.ctaButtonText}
               </Button>
             </div>

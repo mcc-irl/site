@@ -25,10 +25,9 @@ export const metadata: Metadata = {
 
 export default async function ContactPage({ searchParams }: ContactPageProps) {
   const reader = createReader(process.cwd(), keystaticConfig);
-  const entries = await reader.collections.services.all();
-  const serviceOptions = entries
-    .filter((e) => e.entry?.title != null)
-    .map((e) => e.entry!.title!);
+  const contactPage = await reader.singletons.contactPage.read();
+  const serviceOptions = contactPage?.serviceInterestOptions ?? [];
+  const contactDetails = contactPage?.contactDetails ?? [];
   const params = await searchParams;
   const selectedService = params?.service?.trim();
 
@@ -51,33 +50,34 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           <aside className="rounded-xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
             <h3 className="text-lg font-semibold text-slate-900">Contact details</h3>
             <ul className="mt-4 space-y-3 text-sm text-slate-700">
-              <li>
-                <p className="font-medium text-slate-900">Email</p>
-                <a href="mailto:michellecarterconsultancy@outlook.ie" className="transition-colors hover:text-brand-700">
-                  michellecarterconsultancy@outlook.ie
-                </a>
-              </li>
-              <li>
-                <p className="font-medium text-slate-900">Phone</p>
-                <a href="tel:0874255819" className="transition-colors hover:text-brand-700">
-                  0874255819
-                </a>
-              </li>
-              <li>
-                <p className="font-medium text-slate-900">Location</p>
-                <p>Dublin, Ireland</p>
-              </li>
-              <li>
-                <p className="font-medium text-slate-900">LinkedIn</p>
-                <a
-                  href="https://ie.linkedin.com/in/michelle-carter-47b5482a9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-brand-700"
-                >
-                  ie.linkedin.com/in/michelle-carter-47b5482a9
-                </a>
-              </li>
+              {contactDetails.map(({ field, detail }) => {
+                const isEmail = detail.includes("@");
+                const isUrl = detail.startsWith("http");
+                const isPhone = /^[\d\s+()-]+$/.test(detail.trim());
+                const href = isEmail
+                  ? `mailto:${detail}`
+                  : isUrl
+                  ? detail
+                  : isPhone
+                  ? `tel:${detail.replace(/\s/g, "")}`
+                  : null;
+                return (
+                  <li key={field}>
+                    <p className="font-medium text-slate-900">{field}</p>
+                    {href ? (
+                      <a
+                        href={href}
+                        {...(isUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        className="transition-colors hover:text-brand-700"
+                      >
+                        {isUrl ? detail.replace(/^https?:\/\//, "") : detail}
+                      </a>
+                    ) : (
+                      <span>{detail}</span>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </aside>
         </div>

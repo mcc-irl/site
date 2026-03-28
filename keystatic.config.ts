@@ -24,10 +24,6 @@ export default config({
         organisation: fields.text({ label: "Organisation" }),
         quote: fields.text({ label: "Quote", multiline: true }),
         rating: fields.integer({ label: "Rating (1–5)", defaultValue: 5 }),
-        featured: fields.checkbox({
-          label: "Featured on homepage",
-          defaultValue: false,
-        }),
         showInCarousel: fields.checkbox({
           label: "Show in homepage testimonials carousel",
           defaultValue: false,
@@ -80,6 +76,31 @@ export default config({
         ctaDescription: fields.text({ label: "CTA Description", multiline: true }),
         ctaButtonText: fields.text({ label: "CTA Button Text" }),
         ctaButtonHref: fields.text({ label: "CTA Button URL" }),
+      },
+    }),
+
+    contactPage: singleton({
+      label: "Contact Page",
+      path: "content/contact-page",
+      format: { data: "yaml" },
+      schema: {
+        contactDetails: fields.array(
+          fields.object({
+            field: fields.text({ label: "Field" }),
+            detail: fields.text({ label: "Detail" }),
+          }),
+          {
+            label: "Contact Details",
+            itemLabel: (props) => props.fields.field.value ?? "Untitled",
+          }
+        ),
+        serviceInterestOptions: fields.array(
+          fields.text({ label: "Option" }),
+          {
+            label: "Service Interest Dropdown Options",
+            itemLabel: (props) => props.value ?? "Untitled",
+          }
+        ),
       },
     }),
 
