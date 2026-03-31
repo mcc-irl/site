@@ -1,0 +1,2 @@
+cd c:\mcc\site
+npm run dev
