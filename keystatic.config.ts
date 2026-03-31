@@ -45,6 +45,15 @@ export default config({
   },
 
   singletons: {
+    siteSettings: singleton({
+      label: "Site Settings",
+      path: "content/site-settings",
+      format: { data: "yaml" },
+      schema: {
+        footerTagline: fields.text({ label: "Footer Tagline" }),
+      },
+    }),
+
     homePage: singleton({
       label: "Home Page",
       path: "content/homepage",
@@ -84,6 +93,10 @@ export default config({
       path: "content/contact-page",
       format: { data: "yaml" },
       schema: {
+        pageDescription: fields.text({
+          label: "Page Hero Description",
+          multiline: true,
+        }),
         contactDetails: fields.array(
           fields.object({
             field: fields.text({ label: "Field" }),
@@ -109,6 +122,10 @@ export default config({
       path: "content/bio",
       format: { data: "yaml" },
       schema: {
+        pageDescription: fields.text({
+          label: "Page Hero Description",
+          multiline: true,
+        }),
         bio1: fields.text({
           label: "Introduction Paragraph 1",
           multiline: true,
@@ -141,6 +158,30 @@ export default config({
             itemLabel: (props) => props.fields.title.value ?? "Untitled",
           }
         ),
+      },
+    }),
+
+    servicesPage: singleton({
+      label: "Services Page",
+      path: "content/services-page",
+      format: { data: "yaml" },
+      schema: {
+        pageDescription: fields.text({
+          label: "Page Hero Description",
+          multiline: true,
+        }),
+      },
+    }),
+
+    reviewsPage: singleton({
+      label: "Reviews Page",
+      path: "content/reviews-page",
+      format: { data: "yaml" },
+      schema: {
+        pageDescription: fields.text({
+          label: "Page Hero Description",
+          multiline: true,
+        }),
       },
     }),
   },

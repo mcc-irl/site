@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -52,27 +53,55 @@ export default async function Home() {
 
   return (
     <>
-      <section className="bg-gradient-to-b from-brand-50 to-white py-20 sm:py-24">
-        <Container>
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand-700">
-            {homePage.heroEyebrow}
-          </p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-            {homePage.heroHeading}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-slate-600">
-            {homePage.heroDescription}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href={homePage.heroPrimaryButtonHref}>{homePage.heroPrimaryButtonText}</Button>
-            <Button href={homePage.heroSecondaryButtonHref} variant="secondary">
-              {homePage.heroSecondaryButtonText}
-            </Button>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-800 via-brand-700 to-brand-600 py-20 sm:py-28">
+        {/* Decorative rings */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-white/5" />
+          <div className="absolute -right-16 top-24 h-64 w-64 rounded-full bg-white/5" />
+          <div className="absolute right-48 -bottom-16 h-48 w-48 rounded-full bg-brand-900/40" />
+        </div>
+
+        <Container className="relative">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-brand-200">
+                {homePage.heroEyebrow}
+              </p>
+              <h1 className="mt-4 max-w-xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                {homePage.heroHeading}
+              </h1>
+              <p className="mt-6 max-w-lg text-lg text-brand-100/90">
+                {homePage.heroDescription}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button href={homePage.heroPrimaryButtonHref} variant="white">{homePage.heroPrimaryButtonText}</Button>
+                <Button href={homePage.heroSecondaryButtonHref} variant="ghost">
+                  {homePage.heroSecondaryButtonText}
+                </Button>
+              </div>
+            </div>
+
+            {/* Logo blended into hero */}
+            <div className="hidden lg:flex items-center justify-center" aria-hidden="true">
+              <div className="relative flex h-72 w-72 items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-white/5" />
+                <div className="absolute inset-8 rounded-full bg-white/5" />
+                <div className="absolute inset-16 rounded-full bg-white/10" />
+                <Image
+                  src="/logo-transparent.png"
+                  alt=""
+                  width={180}
+                  height={180}
+                  className="relative drop-shadow-lg"
+                />
+              </div>
+            </div>
           </div>
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="bg-brand-50/60 py-16 sm:py-20">
         <Container>
           <SectionHeading
             eyebrow={homePage.servicesEyebrow}
@@ -90,13 +119,13 @@ export default async function Home() {
       </section>
 
       {trustStats.length > 0 && (
-        <section className="border-y border-slate-200 bg-slate-50 py-10 sm:py-12">
+        <section className="bg-gradient-to-r from-brand-700 to-brand-600 py-12 sm:py-16">
           <Container>
             <div className="grid gap-8 text-center sm:grid-cols-3">
               {trustStats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-3xl font-semibold tracking-tight text-slate-900">{stat.value}</p>
-                  <p className="mt-1 text-sm text-slate-600">{stat.label}</p>
+                  <p className="text-4xl font-bold tracking-tight text-white">{stat.value}</p>
+                  <p className="mt-1 text-sm font-medium text-brand-100">{stat.label}</p>
                 </div>
               ))}
             </div>

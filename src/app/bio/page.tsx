@@ -30,31 +30,49 @@ export default async function BioPage() {
 
   return (
     <>
-      <section className="py-16 sm:py-20">
-        <Container>
+      {/* Hero banner */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-800 to-brand-600 py-16 sm:py-20">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/5" />
+          <div className="absolute left-1/3 bottom-0 h-48 w-48 rounded-full bg-brand-900/30" />
+        </div>
+        <Container className="relative">
           <SectionHeading
             eyebrow="About"
             title="Michelle Carter"
-            description="Experienced healthcare trainer and consultant supporting teams to deliver safe, compassionate, person-centred care."
+            description={bio?.pageDescription ?? "Experienced healthcare trainer and consultant supporting teams to deliver safe, compassionate, person-centred care."}
+            inverted
           />
+        </Container>
+      </section>
 
-          <div className="mt-10 grid gap-8 lg:grid-cols-[320px_1fr] lg:items-start">
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-6">
-              <div className="flex aspect-[4/5] items-center justify-center rounded-lg border border-dashed border-slate-300 bg-white text-center">
-                <p className="px-6 text-sm text-slate-500">Professional headshot placeholder</p>
+      {/* Bio intro + photo */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[300px_1fr] lg:items-start">
+            {/* Photo placeholder */}
+            <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-100 to-brand-50 shadow-md ring-1 ring-brand-200">
+              <div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 p-6">
+                {/* Silhouette */}
+                <svg viewBox="0 0 80 90" className="h-40 w-auto text-brand-400" fill="currentColor" aria-hidden="true">
+                  <circle cx="40" cy="22" r="18" />
+                  <path d="M4 88c0-19.88 16.12-36 36-36s36 16.12 36 36" />
+                </svg>
+                <p className="text-center text-xs font-medium text-brand-600">Professional photo coming soon</p>
               </div>
             </div>
 
             <div className="space-y-5 text-slate-700">
               {introParagraphs.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
+                <p key={i} className="leading-7">{paragraph}</p>
               ))}
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 py-16 sm:py-20">
+      {/* Qualifications */}
+      <section className="bg-brand-50/60 py-16 sm:py-20">
         <Container>
           <SectionHeading
             eyebrow="Credentials"
@@ -69,15 +87,21 @@ export default async function BioPage() {
             {qualifications.map((qualification, i) => (
               <li
                 key={i}
-                className="rounded-xl border border-slate-200 bg-white p-5 text-slate-700"
+                className="flex items-start gap-3 rounded-xl border border-brand-100 bg-white p-5"
               >
-                {qualification}
+                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-600" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="currentColor">
+                    <path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z" />
+                  </svg>
+                </span>
+                <span className="text-slate-700">{qualification}</span>
               </li>
             ))}
           </ul>
         </Container>
       </section>
 
+      {/* Values */}
       <section className="py-16 sm:py-20">
         <Container>
           <SectionHeading
@@ -90,10 +114,13 @@ export default async function BioPage() {
             {values.map((value, i) => (
               <article
                 key={i}
-                className="rounded-xl border border-slate-200 bg-white p-6"
+                className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs"
               >
-                <h3 className="text-lg font-semibold text-slate-900">{value.title}</h3>
-                <p className="mt-3 text-slate-600">{value.description}</p>
+                <div className="h-1 bg-gradient-to-r from-brand-500 to-brand-300" />
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-slate-900">{value.title}</h3>
+                  <p className="mt-3 text-slate-600">{value.description}</p>
+                </div>
               </article>
             ))}
           </div>

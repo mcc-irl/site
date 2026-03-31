@@ -21,44 +21,63 @@ export const metadata: Metadata = {
 
 export default async function ServicesPage() {
   const reader = createReader(process.cwd(), keystaticConfig);
-  const entries = await reader.collections.services.all();
+  const [servicesPage, entries] = await Promise.all([
+    reader.singletons.servicesPage.read(),
+    reader.collections.services.all(),
+  ]);
   const serviceList = entries
     .filter((e) => e.entry !== null)
     .map((e) => ({ ...e.entry!, slug: e.slug }));
 
   return (
-    <section className="py-16 sm:py-20">
-      <Container>
-        <SectionHeading
-          eyebrow="Our Services"
-          title="Services"
-          description="Healthcare training and consultancy services designed to strengthen capability, confidence, and quality across your team."
-        />
-
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {serviceList.map((service) => (
-            <article key={service.slug} className="rounded-xl border border-slate-200 bg-white p-6 shadow-xs">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-base font-semibold text-slate-900">{service.title}</h3>
-                {service.icon ? (
-                  <span
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand-100 bg-brand-50 text-lg"
-                    aria-hidden="true"
-                  >
-                    {service.icon}
-                  </span>
-                ) : null}
-              </div>
-              <p className="mt-3 text-sm leading-6 text-slate-600">{service.description}</p>
-              <div className="mt-5">
-                <Button href={`/contact?service=${encodeURIComponent(service.title ?? '')}`} variant="secondary">
-                  Enquire about this service
-                </Button>
-              </div>
-            </article>
-          ))}
+    <>
+      {/* Hero banner */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-800 to-brand-600 py-16 sm:py-20">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="absolute -right-16 -top-16 h-72 w-72 rounded-full bg-white/5" />
+          <div className="absolute left-1/4 -bottom-12 h-56 w-56 rounded-full bg-brand-900/30" />
         </div>
-      </Container>
-    </section>
+        <Container className="relative">
+          <SectionHeading
+            eyebrow="Our Services"
+            title="Services"
+            description={servicesPage?.pageDescription ?? "Healthcare training and consultancy services designed to strengthen capability, confidence, and quality across your team."}
+            inverted
+          />
+        </Container>
+      </section>
+
+      {/* Services grid */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <div className="grid gap-6 md:grid-cols-2">
+            {serviceList.map((service) => (
+              <article key={service.slug} className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs">
+                <div className="h-1 bg-gradient-to-r from-brand-500 to-brand-300" />
+                <div className="p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="text-base font-semibold text-slate-900">{service.title}</h3>
+                    {service.icon ? (
+                      <span
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-100 to-brand-50 text-lg ring-1 ring-brand-200"
+                        aria-hidden="true"
+                      >
+                        {service.icon}
+                      </span>
+                    ) : null}
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{service.description}</p>
+                  <div className="mt-5">
+                    <Button href={`/contact?service=${encodeURIComponent(service.title ?? '')}`} variant="secondary">
+                      Enquire about this service
+                    </Button>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+    </>
   );
 }

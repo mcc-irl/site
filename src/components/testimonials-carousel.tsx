@@ -28,16 +28,27 @@ export function TestimonialsCarousel({ reviews, eyebrow, heading }: Testimonials
   const next = () => setIndex((i) => (i === reviews.length - 1 ? 0 : i + 1));
 
   return (
-    <section className="bg-slate-50 border-y border-slate-200 py-16 sm:py-20">
-      <Container>
-        <SectionHeading eyebrow={eyebrow} title={heading} />
+    <section className="relative overflow-hidden bg-gradient-to-br from-brand-800 to-brand-700 py-16 sm:py-20">
+      {/* Decorative background circles */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute -left-16 -bottom-16 h-64 w-64 rounded-full bg-white/5" />
+        <div className="absolute right-8 -top-8 h-48 w-48 rounded-full bg-white/5" />
+      </div>
+
+      <Container className="relative">
+        <SectionHeading eyebrow={eyebrow} title={heading} inverted />
         <div className="mt-10 flex flex-col items-center">
-          <div className="w-full max-w-2xl rounded-xl border border-slate-200 bg-white p-8 shadow-xs text-center">
+          <div className="relative w-full max-w-2xl rounded-xl bg-white/10 p-8 text-center backdrop-blur-sm ring-1 ring-white/20">
+            {/* Decorative opening quote */}
+            <svg className="absolute left-6 top-4 h-10 w-10 text-brand-300/50" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+            </svg>
+
             <div className="mb-4 flex justify-center gap-0.5" aria-label={`${current.rating} out of 5 stars`}>
               {Array.from({ length: 5 }).map((_, i) => (
                 <svg
                   key={i}
-                  className={`h-5 w-5 ${i < current.rating ? "text-brand-500" : "text-slate-200"}`}
+                  className={`h-5 w-5 ${i < current.rating ? "text-brand-300" : "text-white/20"}`}
                   viewBox="0 0 20 20"
                   fill="currentColor"
                   aria-hidden="true"
@@ -46,12 +57,12 @@ export function TestimonialsCarousel({ reviews, eyebrow, heading }: Testimonials
                 </svg>
               ))}
             </div>
-            <blockquote className="text-base leading-7 text-slate-700">
+            <blockquote className="text-base leading-7 text-white/90">
               &ldquo;{current.quote}&rdquo;
             </blockquote>
             <div className="mt-6">
-              <p className="font-semibold text-slate-900">{current.name}</p>
-              <p className="text-sm text-slate-500">
+              <p className="font-semibold text-white">{current.name}</p>
+              <p className="text-sm text-brand-200">
                 {current.role}, {current.organisation}
               </p>
             </div>
@@ -62,7 +73,7 @@ export function TestimonialsCarousel({ reviews, eyebrow, heading }: Testimonials
               <button
                 onClick={prev}
                 aria-label="Previous testimonial"
-                className="rounded-full border border-slate-200 bg-white p-2 text-slate-600 shadow-xs transition-colors hover:bg-brand-50 hover:text-brand-700 hover:border-brand-200"
+                className="rounded-full border border-white/30 bg-white/10 p-2 text-white transition-colors hover:bg-white/20 hover:border-white/50"
               >
                 <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fillRule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clipRule="evenodd" />
@@ -76,7 +87,7 @@ export function TestimonialsCarousel({ reviews, eyebrow, heading }: Testimonials
                     onClick={() => setIndex(i)}
                     aria-label={`Go to testimonial ${i + 1}`}
                     className={`h-2 w-2 rounded-full transition-colors ${
-                      i === index ? "bg-brand-600" : "bg-slate-300 hover:bg-slate-400"
+                      i === index ? "bg-white" : "bg-white/30 hover:bg-white/50"
                     }`}
                   />
                 ))}
@@ -85,7 +96,7 @@ export function TestimonialsCarousel({ reviews, eyebrow, heading }: Testimonials
               <button
                 onClick={next}
                 aria-label="Next testimonial"
-                className="rounded-full border border-slate-200 bg-white p-2 text-slate-600 shadow-xs transition-colors hover:bg-brand-50 hover:text-brand-700 hover:border-brand-200"
+                className="rounded-full border border-white/30 bg-white/10 p-2 text-white transition-colors hover:bg-white/20 hover:border-white/50"
               >
                 <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
