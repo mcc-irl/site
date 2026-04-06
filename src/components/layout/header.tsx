@@ -18,7 +18,7 @@ export function Header() {
         <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-2 text-xs sm:text-sm text-slate-700">
           <div className="inline-flex items-center gap-3">
             <a
-              href="https://ie.linkedin.com/in/michelle-carter-47b5482a9"
+              href="https://www.linkedin.com/in/michelle-carter-irl/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center text-slate-500 transition-colors hover:text-brand-700"

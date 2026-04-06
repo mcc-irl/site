@@ -1,12 +1,11 @@
-pageDescription: >-
-  Complete the form below to enquire about training and consultancy services.
+pageDescription: Complete the form below to enquire about training and consultancy services.
 contactDetails:
   - field: Email Address
     detail: michellecarterconsultancy@outlook.ie
   - field: Phone
     detail: '0874255819'
   - field: LinkedIn
-    detail: https://ie.linkedin.com/in/michelle-carter-47b5482a9
+    detail: https://www.linkedin.com/in/michelle-carter-irl/
 serviceInterestOptions:
   - Bespoke On-Site Programmes
   - Leadership & Staff Development
