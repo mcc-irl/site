@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 type CardProps = {
   title: string;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 export function Card({ title, children }: CardProps) {

@@ -13,7 +13,7 @@ const navItems = [
 
 export function Header() {
   return (
-    <header className="relative border-b border-slate-200 bg-white/95 backdrop-blur">
+    <header className="relative z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="border-b border-slate-200 bg-slate-50">
         <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-2 text-xs sm:text-sm text-slate-700">
           <div className="inline-flex items-center gap-3">

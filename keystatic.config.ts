@@ -35,10 +35,16 @@ export default config({
       label: "Services",
       slugField: "title",
       path: "content/services/*",
-      format: { data: "yaml" },
+      format: { contentField: "description" },
       schema: {
         title: fields.text({ label: "Service Title" }),
-        description: fields.text({ label: "Description", multiline: true }),
+        order: fields.integer({ label: "Display Order", defaultValue: 99 }),
+        description: fields.document({
+          label: "Description",
+          formatting: true,
+          dividers: true,
+          links: true,
+        }),
         icon: fields.text({ label: "Icon (emoji)" }),
       },
     }),

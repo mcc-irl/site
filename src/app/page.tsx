@@ -44,8 +44,8 @@ export default async function Home() {
     }));
 
   const services = serviceEntries
-    .filter((e) => e.entry !== null && e.entry.title != null)
-    .map((e) => ({ title: e.entry!.title as unknown as string, description: e.entry!.description }));
+    .filter((e) => e.entry !== null && e.slug != null)
+    .map((e) => ({ title: e.slug }));
 
   if (!homePage) return null;
 
@@ -110,9 +110,7 @@ export default async function Home() {
           />
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
-              <Card key={service.title} title={service.title}>
-                {service.description}
-              </Card>
+              <Card key={service.title} title={service.title} />
             ))}
           </div>
         </Container>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DocumentRenderer } from "@keystatic/core/renderer";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -25,9 +26,22 @@ export default async function ServicesPage() {
     reader.singletons.servicesPage.read(),
     reader.collections.services.all(),
   ]);
-  const serviceList = entries
-    .filter((e) => e.entry !== null)
-    .map((e) => ({ ...e.entry!, slug: e.slug }));
+  const serviceList = (
+    await Promise.all(
+      entries
+        .filter((e) => e.entry !== null)
+        .map(async (e) => {
+          const entry = e.entry!;
+          return {
+            slug: e.slug,
+            title: e.slug,
+            order: entry.order ?? 99,
+            icon: entry.icon,
+            description: await entry.description(),
+          };
+        })
+    )
+  ).sort((a, b) => a.order - b.order);
 
   return (
     <>
@@ -55,8 +69,7 @@ export default async function ServicesPage() {
               <article key={service.slug} className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xs">
                 <div className="h-1 bg-gradient-to-r from-brand-500 to-brand-300" />
                 <div className="p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-base font-semibold text-slate-900">{service.title}</h3>
+                  <div className="flex items-center gap-3">
                     {service.icon ? (
                       <span
                         className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-100 to-brand-50 text-lg ring-1 ring-brand-200"
@@ -65,8 +78,11 @@ export default async function ServicesPage() {
                         {service.icon}
                       </span>
                     ) : null}
+                    <h3 className="text-base font-semibold text-slate-900">{service.title}</h3>
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{service.description}</p>
+                  <div className="mt-3 space-y-2 text-sm leading-6 text-slate-600 [&_ul]:mt-1 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_ol]:mt-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1 [&_strong]:font-semibold [&_strong]:text-slate-800 [&_a]:text-brand-600 [&_a]:underline">
+                    <DocumentRenderer document={service.description} />
+                  </div>
                   <div className="mt-5">
                     <Button href={`/contact?service=${encodeURIComponent(service.title ?? '')}`} variant="secondary">
                       Enquire about this service
