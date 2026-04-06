@@ -117,13 +117,13 @@ export default async function Home() {
       </section>
 
       {trustStats.length > 0 && (
-        <section className="bg-gradient-to-r from-brand-700 to-brand-600 py-12 sm:py-16">
+        <section className="border-y border-slate-100 bg-white py-12 sm:py-16">
           <Container>
             <div className="grid gap-8 text-center sm:grid-cols-3">
               {trustStats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-4xl font-bold tracking-tight text-white">{stat.value}</p>
-                  <p className="mt-1 text-sm font-medium text-brand-100">{stat.label}</p>
+                  <p className="text-4xl font-bold tracking-tight text-brand-700">{stat.value}</p>
+                  <p className="mt-1 text-sm font-medium text-slate-500">{stat.label}</p>
                 </div>
               ))}
             </div>
