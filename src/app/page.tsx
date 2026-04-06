@@ -89,7 +89,7 @@ export default async function Home() {
                 <div className="absolute inset-8 rounded-full bg-white/5" />
                 <div className="absolute inset-16 rounded-full bg-white/10" />
                 <Image
-                  src="/logo.png"
+                  src="/logo-inverted.png"
                   alt=""
                   width={180}
                   height={180}
