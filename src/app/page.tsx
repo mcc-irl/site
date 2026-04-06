@@ -116,7 +116,7 @@ export default async function Home() {
         </Container>
       </section>
 
-      {trustStats.length > 0 && (
+      {homePage.showTrustStats && trustStats.length > 0 && (
         <section className="border-y border-slate-100 bg-white py-12 sm:py-16">
           <Container>
             <div className="grid gap-8 text-center sm:grid-cols-3">

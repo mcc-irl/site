@@ -22,6 +22,7 @@ trustStats:
     label: ' Teams Supported'
   - value: '25'
     label: Training Programmes Delivered
+showTrustStats: false
 testimonialsEyebrow: Why Organisations Choose Michelle Carter Consultancy
 testimonialsHeading: Voices From Our Partners
 ctaHeading: Ready to build confidence, competence, and a stronger practice culture?

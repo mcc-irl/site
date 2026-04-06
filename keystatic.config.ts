@@ -85,6 +85,10 @@ export default config({
             itemLabel: (props) => props.fields.label.value ?? "Untitled",
           }
         ),
+        showTrustStats: fields.checkbox({
+          label: "Show Trust Stats section",
+          defaultValue: true,
+        }),
         testimonialsEyebrow: fields.text({ label: "Testimonials Section Eyebrow" }),
         testimonialsHeading: fields.text({ label: "Testimonials Section Heading" }),
         ctaHeading: fields.text({ label: "CTA Heading" }),
