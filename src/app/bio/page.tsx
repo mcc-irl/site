@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { createReader } from "@keystatic/core/reader";
@@ -50,16 +51,16 @@ export default async function BioPage() {
       <section className="py-16 sm:py-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[300px_1fr] lg:items-start">
-            {/* Photo placeholder */}
-            <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-100 to-brand-50 shadow-md ring-1 ring-brand-200">
-              <div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 p-6">
-                {/* Silhouette */}
-                <svg viewBox="0 0 80 90" className="h-40 w-auto text-brand-400" fill="currentColor" aria-hidden="true">
-                  <circle cx="40" cy="22" r="18" />
-                  <path d="M4 88c0-19.88 16.12-36 36-36s36 16.12 36 36" />
-                </svg>
-                <p className="text-center text-xs font-medium text-brand-600">Professional photo coming soon</p>
-              </div>
+            {/* Photo */}
+            <div className="overflow-hidden rounded-2xl shadow-md ring-1 ring-brand-200">
+              <Image
+                src="/profile.jpg"
+                alt="Michelle Carter"
+                width={300}
+                height={375}
+                className="w-full object-cover object-top"
+                priority
+              />
             </div>
 
             <div className="space-y-5 text-slate-700">

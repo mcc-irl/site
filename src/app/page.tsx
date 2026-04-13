@@ -83,17 +83,17 @@ export default async function Home() {
             </div>
 
             {/* Logo blended into hero */}
-            <div className="hidden lg:flex items-center justify-center" aria-hidden="true">
-              <div className="relative flex h-72 w-72 items-center justify-center">
+            <div className="hidden md:flex items-center justify-center" aria-hidden="true">
+              <div className="relative flex h-[32rem] w-[32rem] items-center justify-center">
                 <div className="absolute inset-0 rounded-full bg-white/5" />
-                <div className="absolute inset-8 rounded-full bg-white/5" />
-                <div className="absolute inset-16 rounded-full bg-white/10" />
+                <div className="absolute inset-6 rounded-full bg-white/5" />
+                <div className="absolute inset-14 rounded-full bg-white/10" />
                 <Image
                   src="/logo-inverted.png"
                   alt=""
-                  width={180}
-                  height={180}
-                  className="relative"
+                  width={400}
+                  height={400}
+                  className="relative drop-shadow-[0_8px_48px_rgba(255,255,255,0.35)]"
                 />
               </div>
             </div>
